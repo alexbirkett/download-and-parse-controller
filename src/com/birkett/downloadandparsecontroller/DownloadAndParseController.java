@@ -16,21 +16,28 @@ public class DownloadAndParseController extends Controller {
 
 	public DownloadAndParseController(Context context, DownloadAndParseObserver observer) {
 		super(context);
+		mObserver = observer;
 	}
 	
 	public void downloadAndParseUrl(String url) {
 		mRunningTask = new DownloadAndParseTask(mObserver);
 		mRunningTask.execute(url);
+		mUrl = url;
 	}
 	
 	@Override
 	public void onResume() {
-		
+		if (mUrl != null) {
+			downloadAndParseUrl(mUrl);
+		}
 	}
 	
 	@Override
 	public void onPause() {
-		mRunningTask.cancel(true);
+		if (mRunningTask != null) {
+			mRunningTask.cancel(true);			
+		}
+		mRunningTask = null;
 	}
 	
 	@Override
