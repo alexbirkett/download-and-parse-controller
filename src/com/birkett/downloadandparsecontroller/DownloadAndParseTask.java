@@ -17,7 +17,7 @@ public class DownloadAndParseTask extends AsyncTask<String, Integer, Object> {
 	
 	private Exception mException;
 	
-	DownloadAndParseTask(DownloadAndParseObserver observer) {
+	public DownloadAndParseTask(DownloadAndParseObserver observer) {
 		mObserver = observer;
 	}
 	
@@ -46,10 +46,10 @@ public class DownloadAndParseTask extends AsyncTask<String, Integer, Object> {
 		}
     }
 	
-	/*@Override
+	@Override
 	protected void onPreExecute() {
 		mObserver.onDownloadAndParseStarted();
-    }*/
+    }
 	 
 	private InputStream download(String urlString) throws IOException {
 		URL url = new URL(urlString);
