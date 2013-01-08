@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">DownloadAndParseController</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-
+	<string name="download_and_parse">Download and parse!</string>
+	<string name="download_and_parse_started">Download and parse started</string>
+	<string name="download_and_parse_success">Download and parse success</string>
+	<string name="download_and_parse_failed">Download and parse failed</string>
+	<string name="download_and_parse_click_button">Click button to start</string>
 </resources>

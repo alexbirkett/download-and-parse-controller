@@ -4,6 +4,10 @@ import com.birkett.controllers.BaseControllerActivity;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
+
+import com.birkett.downloadandparsecontroller.R;
 
 public class DownloadAndParseActivity extends BaseControllerActivity implements DownloadAndParseObserver {
 
@@ -34,22 +38,29 @@ public class DownloadAndParseActivity extends BaseControllerActivity implements 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mDownloaderParserController.downloadAndParseUrl(TWITTER_URL);
 	}
-
+	
 	@Override
 	public void onDownloadAndParseStarted() {
-	
+		setStatus(R.string.download_and_parse_started);
 	}
 
 	@Override
 	public void onDownloadAndParseSuccess(Object object) {
-	
+		setStatus(R.string.download_and_parse_success);
 	}
 
 	@Override
 	public void onDownloadAndParseFail(Exception exception) {
-	
+		setStatus(R.string.download_and_parse_failed);
 	}
 	
+	public void onDownloadAndParseButtonClicked(View v) {
+		mDownloaderParserController.downloadAndParseUrl(TWITTER_URL);
+	}
+	
+	private void setStatus(int resid) {
+		TextView view = (TextView) this.findViewById(R.id.status);
+		view.setText(resid);
+	}
 }
