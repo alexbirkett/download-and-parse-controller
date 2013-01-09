@@ -15,6 +15,8 @@ public class DownloadAndParseActivity extends BaseControllerActivity implements 
 	
 	private DownloadAndParseController mDownloaderParserController;
 	
+	private long mDownloadAndParseStartTimetamp;
+	
 	@Override
 	protected void createControllers() {
 		mDownloaderParserController = new DownloadAndParseController(this, this);
@@ -42,17 +44,21 @@ public class DownloadAndParseActivity extends BaseControllerActivity implements 
 	
 	@Override
 	public void onDownloadAndParseStarted() {
+		mDownloadAndParseStartTimetamp = System.currentTimeMillis();
 		setStatus(R.string.download_and_parse_started);
+		
 	}
 
 	@Override
 	public void onDownloadAndParseSuccess(Object object) {
 		setStatus(R.string.download_and_parse_success);
+		displayDuration();
 	}
 
 	@Override
 	public void onDownloadAndParseFail(Exception exception) {
 		setStatus(R.string.download_and_parse_failed);
+		displayDuration();
 	}
 	
 	public void onDownloadAndParseButtonClicked(View v) {
@@ -66,5 +72,15 @@ public class DownloadAndParseActivity extends BaseControllerActivity implements 
 	private void setStatus(int resid) {
 		TextView view = (TextView) this.findViewById(R.id.status);
 		view.setText(resid);
+	}
+	
+	private void displayDuration() {
+		long duraiton = calculateDuration();
+		TextView view = (TextView) this.findViewById(R.id.download_and_parse_duration);
+		view.setText(duraiton + "ms"); // this should go in strings.xml
+	}
+	
+	private long calculateDuration() {
+		return System.currentTimeMillis() - mDownloadAndParseStartTimetamp;
 	}
 }
