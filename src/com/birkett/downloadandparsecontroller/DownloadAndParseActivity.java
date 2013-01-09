@@ -12,7 +12,7 @@ import com.birkett.downloadandparsecontroller.R;
 public class DownloadAndParseActivity extends BaseControllerActivity implements DownloadAndParseObserver {
 
 	private static final String TWITTER_URL = "https://api.twitter.com/1/statuses/user_timeline.json?screen_name=alexbirkett&include_rts=1";
-
+	
 	private DownloadAndParseController mDownloaderParserController;
 	
 	@Override
@@ -57,6 +57,10 @@ public class DownloadAndParseActivity extends BaseControllerActivity implements 
 	
 	public void onDownloadAndParseButtonClicked(View v) {
 		mDownloaderParserController.downloadAndParseUrl(TWITTER_URL);
+	}
+	
+	public void onClearCacheClicked(View v) {
+		CacheUtils.clearCache(this);
 	}
 	
 	private void setStatus(int resid) {

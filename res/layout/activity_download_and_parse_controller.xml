@@ -4,22 +4,32 @@
     android:layout_height="match_parent"
     tools:context=".DownloadAndParseControllerActivity" >
 
+    <Button
+        android:id="@+id/clear_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:onClick="onClearCacheClicked"
+        android:text="@string/clear_cache" />
+
     <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/download_and_parse"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="51dp"
         android:text="@string/download_and_parse_click_button" />
 
     <Button
         android:id="@+id/download_and_parse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/status"
+        android:layout_below="@+id/clear_cache"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
-        android:text="@string/download_and_parse"
-        android:onClick="onDownloadAndParseButtonClicked" />
+        android:layout_marginTop="34dp"
+        android:onClick="onDownloadAndParseButtonClicked"
+        android:text="@string/download_and_parse" />
 
 </RelativeLayout>

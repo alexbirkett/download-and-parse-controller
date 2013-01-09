@@ -8,4 +8,5 @@
 	<string name="download_and_parse_success">Download and parse success</string>
 	<string name="download_and_parse_failed">Download and parse failed</string>
 	<string name="download_and_parse_click_button">Click button to start</string>
+	<string name="clear_cache">Clear cache</string>
 </resources>
